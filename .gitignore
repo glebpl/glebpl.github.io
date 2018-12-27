@@ -1,0 +1,15 @@
+**/.idea
+**/.sass-cache
+**/*.js.map
+**/*.css.map
+**/*.zip
+**/*.rar
+**/*.7z
+**/*.psd
+**/*.bak
+**/*.bak.js
+**/node_modules
+**/dist
+**/docs
+
+se

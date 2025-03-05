@@ -102,7 +102,7 @@ const vkVideos = [
 
 const rutubeVideos = [
   "8fae99ae28bfd3ba4cdf154632089594",
-  "4d0381c284c36e44614da29e628b791d",
+  "be689a7178c25a1df1e335a0070698db",
   "9a4f4b7b9a14f66324eda35f63e882d4",
   "8809073001759c4e98777d940badb35f",
   "c6c0a695ddae3c18ef50d10c16817ee7",
@@ -126,7 +126,8 @@ const youtubeVideos = [
   "FY5hyIHIKgQ",
   "I8jxR2asjRQ",
   "v7PbeasXUbM",
-  "8CYY8EM5xYE"
+  "8CYY8EM5xYE",
+  "hR-1QGMK75c"
 ];
 
 if (source === "compare") {

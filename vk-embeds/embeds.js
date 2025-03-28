@@ -1,13 +1,14 @@
 const container = document.body;
-const width = 360;
-const height = 240;
+const isTrueGetParam = (v) => v === '1' || v === 'true'
 
 const url = new URL(window.location.href);
+const width = url.searchParams.get("w") || 360;
+const height = url.searchParams.get("h") || 240;
 const source = url.searchParams.get("source") || "vk";
 const limit = url.searchParams.get("limit") || 9;
 const forceNewEmbed = !url.searchParams.get("noNewEmbed");
-let useLazyInit = url.searchParams.get("useLazyInit");
-useLazyInit = useLazyInit === '1' || useLazyInit === 'true';
+const useLazyInit = isTrueGetParam(url.searchParams.get("useLazyInit"));
+const useLazyLoading = isTrueGetParam(url.searchParams.get("useLazyLoading"));
 const domain = url.searchParams.get("domain") || 'vkvideo.ru';
 
 const showTotal = (n) => {
@@ -24,6 +25,10 @@ const appendEmbed = (src) => {
   iframe.height = height;
   iframe.allow =
     "autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;";
+
+  if (useLazyLoading) {
+    iframe.loading = 'lazy';
+  }
 
   container.append(iframe);
 };
@@ -50,6 +55,7 @@ const appendRutubeEmbed = (videoId) => {
 const vkVideos = [
   "-20286388_456240820",
   "-217672812_456239405",
+  "-203654344_456239686",
   "-217672812_456239413",
   "-217672812_456239210",
   "-217672812_456239217",
@@ -80,13 +86,13 @@ const vkVideos = [
   "-176294899_456254363",
   "-176294899_456244292",
   "-176294899_456253620",
-  "-145511538_456239127",
-  "-145511538_456239126",
-  "-145511538_456239128",
-  "-145511538_456239097",
-  "-145511538_456239137",
-  "-145511538_456239157",
-  "-145511538_456239134",
+  "-69606939_456239209",
+  "-220018529_456239663",
+  "-222609266_456239803",
+  "-110645251_456239816",
+  "397195256_456239633",
+  "309192433_456239286",
+  "397195256_456239645",
   "-145511538_456239136",
   "-145511538_456239135",
   "-145511538_456239138",
@@ -113,6 +119,7 @@ const rutubeVideos = [
   "e7273eab7e8c43196ce17c80f1bd4dd5",
   "e6bb01652353356ca0333f34a957353c",
   "21d1da000a072af2a38fde2d4177f895"
+  // 8e4376f33a20247a8fb483c97968c176 - LordR 1.1
 ];
 
 const youtubeVideos = [

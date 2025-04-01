@@ -7,6 +7,7 @@ const height = url.searchParams.get("h") || 240;
 const source = url.searchParams.get("source") || "vk";
 const limit = url.searchParams.get("limit") || 9;
 const forceNewEmbed = !url.searchParams.get("noNewEmbed");
+const autoplay = isTrueGetParam(url.searchParams.get("autoplay"));
 const useLazyInit = isTrueGetParam(url.searchParams.get("useLazyInit"));
 const useLazyLoading = isTrueGetParam(url.searchParams.get("useLazyLoading"));
 const domain = url.searchParams.get("domain") || 'vkvideo.ru';
@@ -40,6 +41,8 @@ const appendVkEmbed = (videoId) => {
       forceNewEmbed ? "&force_new_embed=1" : ""
     }${
       useLazyInit ? "&useLazyInit=true" : ""
+    }${
+      autoplay ? "&autoplay=1" : ""
     }`
   );
 };

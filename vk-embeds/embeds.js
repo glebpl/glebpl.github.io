@@ -8,9 +8,9 @@ const source = url.searchParams.get("source") || "vk";
 const limit = url.searchParams.get("limit") || 9;
 const forceNewEmbed = !url.searchParams.get("noNewEmbed");
 const autoplay = isTrueGetParam(url.searchParams.get("autoplay"));
-const useLazyInit = isTrueGetParam(url.searchParams.get("useLazyInit"));
 const useLazyLoading = isTrueGetParam(url.searchParams.get("useLazyLoading"));
 const domain = url.searchParams.get("domain") || 'vkvideo.ru';
+const vkVideosFromUrl = url.searchParams.has("vkVideos") ? url.searchParams.get("vkVideos").split(',') : undefined;
 
 const showTotal = (n) => {
   const div = document.createElement("div");
@@ -40,8 +40,6 @@ const appendVkEmbed = (videoId) => {
     `https://${domain}/video_ext.php?oid=${oid}&id=${vid}&hd=2${
       forceNewEmbed ? "&force_new_embed=1" : ""
     }${
-      useLazyInit ? "&useLazyInit=true" : ""
-    }${
       autoplay ? "&autoplay=1" : ""
     }`
   );
@@ -55,7 +53,7 @@ const appendRutubeEmbed = (videoId) => {
   appendEmbed(`https://rutube.ru/play/embed/${videoId}/`);
 };
 
-const vkVideos = [
+const vkVideos = vkVideosFromUrl ?? [
   "-20286388_456240820",
   "-217672812_456239405",
   "-203654344_456239686",
@@ -93,11 +91,11 @@ const vkVideos = [
   "-220018529_456239663",
   "-222609266_456239803",
   "-110645251_456239816",
-  "397195256_456239633",
-  "309192433_456239286",
-  "397195256_456239645",
-  "-145511538_456239136",
-  "-145511538_456239135",
+  "-176294899_456246929",
+  "-176294899_456243085",
+  "-176294899_456254562",
+  "-176294899_456254551",
+  "-176294899_456254422",
   "-145511538_456239138",
   "-145511538_456239131",
   "-145511538_456239139",

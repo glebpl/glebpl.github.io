@@ -7,6 +7,7 @@ const height = url.searchParams.get("h") || 240;
 const source = url.searchParams.get("source") || "vk";
 const limit = url.searchParams.get("limit") || 9;
 const forceNewEmbed = !url.searchParams.get("noNewEmbed");
+const useNoReferrer = isTrueGetParam(url.searchParams.get("noreferrer"));
 const autoplay = isTrueGetParam(url.searchParams.get("autoplay"));
 const useLazyLoading = isTrueGetParam(url.searchParams.get("useLazyLoading"));
 const domain = url.searchParams.get("domain") || 'vkvideo.ru';
@@ -29,6 +30,9 @@ const appendEmbed = (src) => {
 
   if (useLazyLoading) {
     iframe.loading = 'lazy';
+  }
+  if (useNoReferrer) {
+    iframe.referrerpolicy = 'no-referrer';
   }
 
   container.append(iframe);

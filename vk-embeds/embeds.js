@@ -32,7 +32,7 @@ const appendEmbed = (src) => {
     iframe.loading = 'lazy';
   }
   if (useNoReferrer) {
-    iframe.referrerpolicy = 'no-referrer';
+    iframe.referrerPolicy = 'no-referrer';
   }
 
   container.append(iframe);

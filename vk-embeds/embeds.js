@@ -6,7 +6,7 @@ const width = url.searchParams.get("w") || 360;
 const height = url.searchParams.get("h") || 240;
 const source = url.searchParams.get("source") || "vk";
 const limit = url.searchParams.get("limit") || 9;
-const forceNewEmbed = !url.searchParams.get("noNewEmbed");
+const forceLegacyEmbed = url.searchParams.get("force_legacy_embed");
 const useNoReferrer = isTrueGetParam(url.searchParams.get("noreferrer"));
 const autoplay = isTrueGetParam(url.searchParams.get("autoplay"));
 const useLazyLoading = isTrueGetParam(url.searchParams.get("useLazyLoading"));
@@ -42,7 +42,7 @@ const appendVkEmbed = (videoId) => {
   const [oid, vid] = videoId.split("_");
   appendEmbed(
     `https://${domain}/video_ext.php?oid=${oid}&id=${vid}&hd=2${
-      forceNewEmbed ? "&force_new_embed=1" : ""
+      forceLegacyEmbed ? "&force_legacy_embed=1" : ""
     }${
       autoplay ? "&autoplay=1" : ""
     }`
